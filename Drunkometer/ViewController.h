@@ -10,6 +10,17 @@
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) UITextField *beerPercentTextField;
+@property (weak, nonatomic) UISlider *beerCountSlider;
+@property (weak, nonatomic) UILabel *resultLabel;
+//@property (weak, nonatomic) UILabel *numberOfBeers;
+//@property(nonatomic) BOOL autoresizesSubviews;
+//@property(nonatomic) UIViewAutoresizing autoresizingMask;
+@property(nonatomic, retain) UIColor *minimumTrackTintColor;
+@property(nonatomic, retain) UIColor *maximumTrackTintColor;
+
+- (void)buttonPressed:(UIButton *)sender;
+
 
 @end
 
