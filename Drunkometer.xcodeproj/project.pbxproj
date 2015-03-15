@@ -14,6 +14,7 @@
 		27C7A8981AB0F8ED0021A143 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27C7A8971AB0F8ED0021A143 /* Images.xcassets */; };
 		27C7A89B1AB0F8ED0021A143 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C7A8991AB0F8ED0021A143 /* LaunchScreen.xib */; };
 		27C7A8A71AB0F8ED0021A143 /* DrunkometerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C7A8A61AB0F8ED0021A143 /* DrunkometerTests.m */; };
+		27EF5D3D1AB3928A007F29A9 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EF5D3C1AB3928A007F29A9 /* MainMenuViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,8 @@
 		27C7A8A01AB0F8ED0021A143 /* DrunkometerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrunkometerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C7A8A51AB0F8ED0021A143 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27C7A8A61AB0F8ED0021A143 /* DrunkometerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrunkometerTests.m; sourceTree = "<group>"; };
+		27EF5D3B1AB3928A007F29A9 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
+		27EF5D3C1AB3928A007F29A9 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,8 @@
 				27C7A88F1AB0F8ED0021A143 /* AppDelegate.m */,
 				27C7A8911AB0F8ED0021A143 /* ViewController.h */,
 				27C7A8921AB0F8ED0021A143 /* ViewController.m */,
+				27EF5D3B1AB3928A007F29A9 /* MainMenuViewController.h */,
+				27EF5D3C1AB3928A007F29A9 /* MainMenuViewController.m */,
 				27B77C931AB25CF300CB257C /* WhiskeyViewController.h */,
 				27B77C941AB25CF300CB257C /* WhiskeyViewController.m */,
 				27C7A8971AB0F8ED0021A143 /* Images.xcassets */,
@@ -224,6 +229,7 @@
 				27B77C951AB25CF300CB257C /* WhiskeyViewController.m in Sources */,
 				27C7A8901AB0F8ED0021A143 /* AppDelegate.m in Sources */,
 				27C7A88D1AB0F8ED0021A143 /* main.m in Sources */,
+				27EF5D3D1AB3928A007F29A9 /* MainMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

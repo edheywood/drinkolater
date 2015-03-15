@@ -14,9 +14,18 @@
 
 @implementation WhiskeyViewController
 
+- (instancetype) init {
+    self = [super init];
+    if (self) {
+        self.title = NSLocalizedString(@"Whiskey", nil);
+     
+    }
+    return self;
+}
+
 - (void) viewDidLoad {
     [super viewDidLoad];
-    self.title = NSLocalizedString(@"Whiskey", @"whiskey");
+    self.view.backgroundColor = [UIColor colorWithRed:0.988 green:0.354 blue:0.039 alpha:1.000];
 }
 
 - (void)buttonPressed:(UIButton *)sender;

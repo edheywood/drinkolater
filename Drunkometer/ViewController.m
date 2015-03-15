@@ -17,6 +17,20 @@
 
 @implementation ViewController
 
+- (instancetype) init {
+    self = [super init];
+    
+    if (self) {
+        self.title = NSLocalizedString(@"Wine", @"wine");
+        // Since we don't have icons, let's move the title to the middle of the tab bar
+        [self.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -18)];
+    }
+    
+    return self;
+}
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -50,7 +64,7 @@
     self.resultLabel.numberOfLines = 0;
 //    self.numberOfBeers.numberOfLines = 0;
     
-    self.title = NSLocalizedString(@"Wine", @"wine");
+    self.view.backgroundColor = [UIColor colorWithRed:0.988 green:0.354 blue:0.039 alpha:0.900];
 }
 
 - (void) viewWillLayoutSubviews {
@@ -132,6 +146,7 @@
 - (void)sliderDidChangeValue:(UISlider *)sender {
     NSLog(@"Slider value changed to %f", sender.value);
     [self.beerPercentTextField resignFirstResponder];
+     [self.tabBarItem setBadgeValue:[NSString stringWithFormat:@"%d", (int) sender.value]];
 
     int numberOfBeers = self.beerCountSlider.value;
     int ouncesInOneBeerGlass = 12;  //assume they are 12oz beer bottles
