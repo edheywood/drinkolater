@@ -50,6 +50,7 @@
     self.resultLabel.numberOfLines = 0;
 //    self.numberOfBeers.numberOfLines = 0;
     
+    self.title = NSLocalizedString(@"Wine", @"wine");
 }
 
 - (void) viewWillLayoutSubviews {
@@ -60,7 +61,7 @@
     CGFloat itemWidth = viewWidth - padding - padding;
     CGFloat itemHeight = 44;
     
-    self.beerPercentTextField.frame = CGRectMake(padding, padding, itemWidth, itemHeight);
+    self.beerPercentTextField.frame = CGRectMake(padding, padding + 100, itemWidth, itemHeight);
     
     CGFloat bottomOfTextField = CGRectGetMaxY(self.beerPercentTextField.frame);
     self.beerCountSlider.frame = CGRectMake(padding, bottomOfTextField + padding, itemWidth, itemHeight);
@@ -131,18 +132,7 @@
 - (void)sliderDidChangeValue:(UISlider *)sender {
     NSLog(@"Slider value changed to %f", sender.value);
     [self.beerPercentTextField resignFirstResponder];
-//    int progressAsInt =(int)(_beerCountSlider.value + 1.0i);
-//    NSString *beerString =[[NSString alloc]
-//                        initWithFormat:@"%d",progressAsInt];
-//    self.numberOfBeers.text = beerString;
-}
 
-- (void)buttonPressed:(UIButton *)sender {
-    
-    [self.beerPercentTextField resignFirstResponder];
-    
-    // first, calculate how much alcohol is in all those beers...
-    
     int numberOfBeers = self.beerCountSlider.value;
     int ouncesInOneBeerGlass = 12;  //assume they are 12oz beer bottles
     
@@ -156,7 +146,7 @@
     float alcoholPercentageOfWine = 0.13;  // 13% is average
     
     float ouncesOfAlcoholPerWineGlass = ouncesInOneWineGlass * alcoholPercentageOfWine;
-    float numberOfWineGlassesForEquivalentAlcoholAmount = ouncesOfAlcoholTotal / ouncesOfAlcoholPerWineGlass;
+    int numberOfWineGlassesForEquivalentAlcoholAmount = ouncesOfAlcoholTotal / ouncesOfAlcoholPerWineGlass;
     
     // decide whether to use "beer"/"beers" and "glass"/"glasses"
     
@@ -178,8 +168,59 @@
     
     // generate the result text, and display it on the label
     
-    NSString *resultText = [NSString stringWithFormat:NSLocalizedString(@"%d %@ contains as much alcohol as %.1f %@ of wine.", nil), numberOfBeers, beerText, numberOfWineGlassesForEquivalentAlcoholAmount, wineText];
+    NSString *resultText = [NSString stringWithFormat:NSLocalizedString(@"%d %@ contains as much alcohol as %d %@ of wine.", nil), numberOfBeers, beerText, numberOfWineGlassesForEquivalentAlcoholAmount, wineText];
     self.resultLabel.text = resultText;
+    
+    NSString *titleText = [NSString stringWithFormat:@"%d %@", numberOfWineGlassesForEquivalentAlcoholAmount, wineText];
+    self.title = [NSString stringWithFormat:@"Wine (%@)", titleText];
+}
+
+- (void)buttonPressed:(UIButton *)sender {
+    
+    [self.beerPercentTextField resignFirstResponder];
+    
+    // first, calculate how much alcohol is in all those beers...
+    
+    int numberOfBeers = self.beerCountSlider.value;
+    int ouncesInOneBeerGlass = 12;  //assume they are 12oz beer bottles
+    
+    float alcoholPercentageOfBeer = [self.beerPercentTextField.text floatValue] / 100;
+    float ouncesOfAlcoholPerBeer = ouncesInOneBeerGlass * alcoholPercentageOfBeer;
+    float ouncesOfAlcoholTotal = ouncesOfAlcoholPerBeer * numberOfBeers;
+    
+    // now, calculate the equivalent amount of wine...
+    
+    float ouncesInOneWineGlass = 5;  // wine glasses are usually 5oz
+    float alcoholPercentageOfWine = 0.13;  // 13% is average
+    
+    float ouncesOfAlcoholPerWineGlass = ouncesInOneWineGlass * alcoholPercentageOfWine;
+    int numberOfWineGlassesForEquivalentAlcoholAmount = ouncesOfAlcoholTotal / ouncesOfAlcoholPerWineGlass;
+    
+    // decide whether to use "beer"/"beers" and "glass"/"glasses"
+    
+    NSString *beerText;
+    
+    if (numberOfBeers == 1) {
+        beerText = NSLocalizedString(@"beer", @"singular beer");
+    } else {
+        beerText = NSLocalizedString(@"beers", @"plural of beer");
+    }
+    
+    NSString *wineText;
+    
+    if (numberOfWineGlassesForEquivalentAlcoholAmount == 1) {
+        wineText = NSLocalizedString(@"glass", @"singular glass");
+    } else {
+        wineText = NSLocalizedString(@"glasses", @"plural of glass");
+    }
+    
+    // generate the result text, and display it on the label
+    
+    NSString *resultText = [NSString stringWithFormat:NSLocalizedString(@"%d %@ contains as much alcohol as %d %@ of wine.", nil), numberOfBeers, beerText, numberOfWineGlassesForEquivalentAlcoholAmount, wineText];
+    self.resultLabel.text = resultText;
+    
+    NSString *titleText = [NSString stringWithFormat:@"%d %@", numberOfWineGlassesForEquivalentAlcoholAmount, wineText];
+    self.title = [NSString stringWithFormat:@"Wine (%@)", titleText];
 }
 
 - (void)tapGestureDidFire:(UITapGestureRecognizer *)sender {
