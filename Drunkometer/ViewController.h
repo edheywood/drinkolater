@@ -20,6 +20,7 @@
 @property(nonatomic, retain) UIColor *maximumTrackTintColor;
 
 - (void)buttonPressed:(UIButton *)sender;
+- (void)sliderDidChangeValue:(UISlider *)sender;
 
 
 @end

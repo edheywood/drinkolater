@@ -68,4 +68,11 @@
     self.title = [NSString stringWithFormat:@"Whiskey (%@)", titleText];
 }
 
+
+- (void)sliderDidChangeValue:(UISlider *)sender {
+    [super sliderDidChangeValue:sender];
+    self.title = [NSString stringWithFormat:@"Whiskey (%d)", (int)sender.value];
+}
+
+
 @end
